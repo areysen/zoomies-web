@@ -18,7 +18,8 @@ const portableTextComponents: PortableTextComponents = {
     ),
   },
   types: {
-    block: ({ children }) => {
+    block: (props: import('@portabletext/react').PortableTextTypeComponentProps<any>) => {
+      const { children } = props
       return (
         <p>
           {(children || []).map(child =>
