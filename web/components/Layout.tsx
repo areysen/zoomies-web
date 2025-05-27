@@ -23,7 +23,7 @@ const portableTextComponents: PortableTextComponents = {
 
       return (
         <p>
-          {children.map((child, i) =>
+          {children.map((child: any, i: number) =>
             typeof child === 'string'
               ? child.replace('[year]', `${new Date().getFullYear()}`)
               : React.isValidElement(child)
