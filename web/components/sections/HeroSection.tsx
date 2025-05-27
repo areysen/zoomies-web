@@ -1,11 +1,10 @@
 import Image from 'next/image'
-import { urlForImage } from '@/lib/sanity.image'
 
 interface HeroSectionProps {
   heading?: string
   subheading?: string
-  image?: { asset: { _ref: string } }
-  backgroundImage?: { asset: { _ref: string } }
+  image?: { asset: { url: string } }
+  backgroundImage?: { asset: { url: string } }
   textPosition?: 'top-left' | 'center' | 'bottom-right'
   ctaText?: string
   ctaLink?: string
@@ -34,10 +33,10 @@ export default function HeroSection({ heading, subheading, image, backgroundImag
         </div>
       )}
       <div className="relative z-10">
-        {image?.asset?._ref && (
+        {image?.asset?.url && (
           <div className="relative h-96 w-full">
             <Image
-              src={urlForImage(image).url()}
+              src={image.asset.url}
               alt={heading || 'Hero Image'}
               fill
               className="object-cover"
@@ -52,7 +51,7 @@ export default function HeroSection({ heading, subheading, image, backgroundImag
             </div>
           </div>
         )}
-        {!image?.asset?._ref && heading && (
+        {!image?.asset?.url && heading && (
           <div className={`relative h-[300px] flex ${alignment}`}>
             <div className="bg-gray-900 bg-opacity-80 px-6 py-10 text-center text-white rounded max-w-2xl">
               <h1 className="text-4xl md:text-5xl font-bold">{heading}</h1>
