@@ -19,14 +19,18 @@ const portableTextComponents: PortableTextComponents = {
   },
   types: {
     block: (props: import('@portabletext/react').PortableTextTypeComponentProps<any>) => {
-      const { children } = props.value
+      const { children } = props
       return (
         <p>
-          {(children || []).map((child: string | React.ReactNode) =>
-            typeof child === 'string'
-              ? child.replace('[year]', `${new Date().getFullYear()}`)
-              : child
-          )}
+          {Array.isArray(children)
+            ? children.map((child, i) =>
+                typeof child === 'string'
+                  ? child.replace('[year]', `${new Date().getFullYear()}`)
+                  : React.isValidElement(child)
+                  ? child
+                  : null
+              )
+            : children}
         </p>
       )
     },
