@@ -85,12 +85,12 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div
       className="min-h-screen flex flex-col"
-      style={{ backgroundColor: resolveColor(theme?.backgroundColor, theme) || '#f9fafb' }}
+      style={{ backgroundColor: theme ? resolveColor(theme.backgroundColor, theme) || '#f9fafb' : '#f9fafb' }}
     >
       {/* Header */}
       <header
         className="p-4 sticky top-0 z-50"
-        style={{ backgroundColor: resolveColor(theme?.headerColor, theme) || '#000' }}
+        style={{ backgroundColor: theme ? resolveColor(theme.headerColor, theme) || '#000' : '#000' }}
       >
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           {theme?.logo?.asset?.url ? (
@@ -127,7 +127,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       {/* Footer */}
       <footer
         className="text-white text-xs px-6 py-10"
-        style={{ backgroundColor: resolveColor(theme?.footerColor, theme) || '#000' }}
+        style={{ backgroundColor: theme ? resolveColor(theme.footerColor, theme) || '#000' : '#000' }}
       >
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between gap-8">
           <div className="space-y-4">
