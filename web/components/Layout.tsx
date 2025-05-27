@@ -22,7 +22,7 @@ const portableTextComponents: PortableTextComponents = {
       const { children } = props.value
       return (
         <p>
-          {(children || []).map(child =>
+          {(children || []).map((child: string | React.ReactNode) =>
             typeof child === 'string'
               ? child.replace('[year]', `${new Date().getFullYear()}`)
               : child
