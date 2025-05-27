@@ -16,7 +16,7 @@ const FormSection = ({ heading, subheading, formEmbed, alignment = 'center', fie
     <section className={`max-w-4xl mx-auto px-6 py-10 ${alignmentClass}`}>
       {heading && <h2 className="text-3xl font-bold mb-4">{heading}</h2>}
       {subheading && <p className="text-lg text-gray-600 mb-8">{subheading}</p>}
-      {fields?.length > 0 && (
+      {Array.isArray(fields) && fields.length > 0 && (
         <form className="space-y-4 mt-8 max-w-xl mx-auto">
           {fields.map((field) => (
             <div key={field.name} className="text-left">
