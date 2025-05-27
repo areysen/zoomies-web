@@ -19,7 +19,7 @@ const portableTextComponents: PortableTextComponents = {
   },
   types: {
     block: (props) => {
-      const children = Array.isArray(props.children) ? props.children : []
+      const children = Array.isArray((props as any).children) ? (props as any).children : []
 
       return (
         <p>
